@@ -3,10 +3,12 @@ import { GlobalContext } from "../../context";
 import axios from "axios";
 import classes from "./styles.module.css";
 import { FaTrash, FaEdit } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 
 export default function Home() {
   const { blogList, setBlogList, pending, setPending } =
     useContext(GlobalContext);
+  const navigate = useNavigate();
 
   async function fetchListOfBlogs() {
     setPending(true);
@@ -19,6 +21,7 @@ export default function Home() {
       setPending(false);
     } else {
       setPending(false);
+      setBlogList([]);
     }
   }
 
@@ -30,6 +33,7 @@ export default function Home() {
 
     if (result?.message) {
       fetchListOfBlogs();
+      //navigate(0)
     }
   }
 
