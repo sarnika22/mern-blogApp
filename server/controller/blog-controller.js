@@ -23,7 +23,7 @@ const addNewBlog = async (req, res) => {
   const { title, description } = req.body;
   const currentDate = new Date();
 
-  const newlyCreatedBlog = new Blog({
+  const newlyCreatedBlog = new blog({
     title,
     description,
     date: currentDate,
