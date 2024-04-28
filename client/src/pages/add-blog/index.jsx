@@ -1,11 +1,20 @@
 import { useContext } from "react";
 import classes from "./styles.module.css";
 import { GlobalContext } from "../../context";
-
+import axios from "axios";
 export default function AddNewBlog() {
-  const {formdata, setFormData} = useContext(GlobalContext);
+  const { formdata, setFormData } = useContext(GlobalContext);
 
   console.log(formdata);
+
+  async function handleSaveBlogToDatabase() {
+    const response = await axios.post("http://localhost:5000/api/blogs/add", {
+      title: formdata.title,
+      description: formdata.description,
+    });
+    const result = await response.data;
+    console.log(result);
+  }
 
   return (
     <div className={classes.wrapper}>
@@ -30,7 +39,7 @@ export default function AddNewBlog() {
             setFormData({ ...formdata, description: event.target.value })
           }
         />
-        <button>Add new Blog</button>
+        <button onClick={handleSaveBlogToDatabase}> Add new Blog</button>
       </div>
     </div>
   );

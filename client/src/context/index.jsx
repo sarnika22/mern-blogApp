@@ -8,5 +8,5 @@ export default function GlobalState({ children }) {
     description : ""
   })
 
-  return <GlobalContext.Provider>{children}</GlobalContext.Provider>;
+  return <GlobalContext.Provider value={{ formdata, setFormData }}>{children}</GlobalContext.Provider>;
 }
