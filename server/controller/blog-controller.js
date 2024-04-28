@@ -37,7 +37,7 @@ const addNewBlog = async (req, res) => {
 
   try {
     const session = await mongoose.startSession();
-    session.startTransaction(); 
+    session.startTransaction();
     await newlyCreatedBlog.save(session);
     session.commitTransaction();
   } catch (error) {
@@ -54,9 +54,8 @@ const deleteBlog = async (req, res) => {
     const findCurrentBlog = await blog.findByIdAndDelete(id);
     if (!findCurrentBlog) {
       return res.status(404).json({ message: "Blog not found" });
-
-      return res.status(200).json({ message: "Blog deleted successfully" });
     }
+    return res.status(200).json({ message: "Blog deleted successfully" });
   } catch (error) {
     console.log(error);
     return res
