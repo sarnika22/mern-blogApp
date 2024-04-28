@@ -9,6 +9,7 @@ export default function GlobalState({ children }) {
 
   const [blogList, setBlogList] = useState([]);
   const [pending, setPending] = useState(false);
+  const [isEdit, setIsEdit] = useState(false);
 
   return (
     <GlobalContext.Provider
@@ -19,6 +20,8 @@ export default function GlobalState({ children }) {
         setPending,
         formdata,
         setFormData,
+        isEdit,
+        setIsEdit,
       }}
     >
       {children}

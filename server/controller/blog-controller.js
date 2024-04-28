@@ -77,7 +77,7 @@ const updateBlog = async (req, res) => {
   } catch (error) {
     console.log(error);
     res
-      .send(500)
+      .send.status(500)
       .json({ message: "Something went wrong while Updating! Try Again" });
   }
 

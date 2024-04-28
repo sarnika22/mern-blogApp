@@ -37,6 +37,11 @@ export default function Home() {
     }
   }
 
+  function handleEdit(getCurrentBlogItem) {
+    console.log(getCurrentBlogItem);
+    navigate("/add-blog", {state : {getCurrentBlogItem}});
+  }
+
   useEffect(() => {
     fetchListOfBlogs();
   }, []);
@@ -53,7 +58,7 @@ export default function Home() {
               <div key={blogItem._id}>
                 <p>{blogItem.title}</p>
                 <p>{blogItem.description}</p>
-                <FaEdit size={30} />
+                <FaEdit onClick={() => handleEdit(blogItem)} size={30} />
                 <FaTrash
                   onClick={() => handleDeleteBlog(blogItem._id)}
                   size={30}
