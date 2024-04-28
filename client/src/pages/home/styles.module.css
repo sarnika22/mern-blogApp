@@ -1,0 +1,10 @@
+.blogList{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+}
+
+.blogList div{
+    padding: 10px;
+    border: 1px solid red;
+    
+}

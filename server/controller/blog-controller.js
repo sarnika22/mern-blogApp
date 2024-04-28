@@ -36,12 +36,12 @@ const addNewBlog = async (req, res) => {
   }
 
   try {
-    const session = await mongoose.startSession;
-    session.startTransaction();
-    await newlyCreatedBlog.save({ session: session });
+    const session = await mongoose.startSession();
+    session.startTransaction(); 
+    await newlyCreatedBlog.save(session);
     session.commitTransaction();
   } catch (error) {
-    return res.send(500).json({ message: 0 });
+    return res.send(500).json({ message: error });
   }
 
   return res.status(200).json({ newlyCreatedBlog });
